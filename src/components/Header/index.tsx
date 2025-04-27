@@ -2,7 +2,7 @@ import CreateExpenseForm from '@/components/CreateExpenseForm';
 import { HeaderStyle, Link } from '@/components/Header/styles';
 import { Container } from '@/styles/global';
 import { Button, Flex, Grid } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const { useBreakpoint } = Grid;
 
@@ -18,6 +18,10 @@ const Nav = () => (
 export default function Header() {
   const { md, xl } = useBreakpoint();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (xl) setIsModalOpen(false);
+  }, [xl]);
 
   return (
     <HeaderStyle>

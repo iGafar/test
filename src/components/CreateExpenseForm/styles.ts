@@ -16,6 +16,7 @@ export const FormWrapper = styled.div`
 
   @media (max-width: 1200px) {
     width: auto;
+    padding: 0;
   }
 `;
 
@@ -53,4 +54,8 @@ export const RadioGroup = styled(Radio.Group)`
 
 export const TitleStyle = styled(Title)`
   margin-bottom: 24px !important;
+
+  @media (max-width: 1200px) {
+    margin-bottom: 10px !important;
+  }
 `;

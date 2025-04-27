@@ -42,7 +42,9 @@ interface ICreateExpenseFormProps {
   onCancel?: () => void;
 }
 
-const ExpenseForm = () => {
+const ExpenseForm = ({
+  onCancel,
+}: Pick<ICreateExpenseFormProps, 'onCancel'>) => {
   const [form] = Form.useForm();
   const { addExpense } = useExpenses();
 
@@ -56,6 +58,7 @@ const ExpenseForm = () => {
 
     toast.success('Расход успешно добавлен');
     form.resetFields();
+    onCancel?.();
   };
 
   return (
@@ -128,7 +131,7 @@ export default function CreateExpenseForm({
 }: ICreateExpenseFormProps) {
   return isModal ? (
     <Modal open={isOpen} onCancel={onCancel} footer={false}>
-      <ExpenseForm />
+      <ExpenseForm onCancel={onCancel} />
     </Modal>
   ) : (
     <ShadowBox>
